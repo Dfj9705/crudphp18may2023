@@ -5,10 +5,11 @@ abstract class Conexion{
 
     private static function conectar(){
         try{
-        
+            //CONEXION A LA BD DE INFORMIX EN DOCKER 
             self::$conexion = new PDO('informix:host=host.docker.internal; service=9088; database=mdn; server=informix; protocol=onsoctcp;EnableScrollableCursors = 1','informix','in4mix'); 
             // echo "CONECTADO";
         }catch(PDOException $e){
+            // IMPRIME EN PANTALLA EL ERROR
             echo "Error de conexion de BD";
             echo "<br>";
             echo $e->getMessage();
@@ -19,9 +20,15 @@ abstract class Conexion{
     }
 
     public static function ejecutar($sql){
+        // CONECTANDOSE A LA BD CON EL METODO CONECTAR
         self::conectar();
+        // PREPARAMOS LA SENTENCIA
         $sentencia = self::$conexion->prepare($sql);
+        // EJECUTAMOS A SENTENCIA
         $resultado = $sentencia->execute();
+        // CERRANDO LA CONEXION
+        self::$conexion = null;
+        // DEVOLVEMOS RESULTADOS
         return $resultado;
     }
 }
