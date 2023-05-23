@@ -47,22 +47,6 @@ try {
                         <?php endforeach ?>
                     </tbody>
                 </table>
-                <ol>
-                    <?php  foreach($productos as $key => $producto) : ?>
-                        <li>
-                            <?= $producto['PRODUCTO_NOMBRE'] ?> - <?= $producto['PRODUCTO_PRECIO'] ?>
-                    </li>
-                    <?php endforeach ?>
-                </ol>
-
-                <select name="" id="">
-                    <?php foreach($productos as $key => $producto) : ?>
-                        <option value="<?= $producto['PRODUCTO_ID'] ?>">
-                            <?= $producto['PRODUCTO_NOMBRE'] ?> - <?= $producto['PRODUCTO_PRECIO'] ?>
-                        </option>
-                    <?php endforeach ?>
-                </select>
-              
             </div>
         </div>
         <div class="row">
