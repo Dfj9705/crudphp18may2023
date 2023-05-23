@@ -1,15 +1,24 @@
 <?php
 require '../../modelos/Producto.php';
 
-try {
-    $producto = new Producto($_POST);
-    $resultado = $producto->guardar();
-    $error = "NO se guardó correctamente";
-} catch (PDOException $e) {
-    $error = $e->getMessage();
-} catch (Exception $e2){
-    $error = $e2->getMessage();
+
+if($_POST['producto_nombre'] != '' && $_POST['producto_precio'] != ''){
+
+
+
+    try {
+        $producto = new Producto($_POST);
+        $resultado = $producto->guardar();
+        $error = "NO se guardó correctamente";
+    } catch (PDOException $e) {
+        $error = $e->getMessage();
+    } catch (Exception $e2){
+        $error = $e2->getMessage();
+    }
+}else{
+    $error = "Debe llenar todos los datos";
 }
+
 
 // if($resultado){
 //     echo "Guardado exitosamente";
