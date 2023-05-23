@@ -23,7 +23,16 @@ class Producto extends Conexion{
     }
 
     public function buscar(){
-        $sql = "SELECT * from productos ";
+        $sql = "SELECT * from productos where producto_situacion = 1 ";
+
+        if($this->producto_nombre != ''){
+            $sql .= " and producto_nombre like '%$this->producto_nombre%' ";
+        }
+
+        if($this->producto_precio != ''){
+            $sql .= " and producto_precio = $this->producto_precio ";
+        }
+
         $resultado = self::servir($sql);
         return $resultado;
     }

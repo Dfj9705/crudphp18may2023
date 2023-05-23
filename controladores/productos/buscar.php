@@ -38,6 +38,7 @@ try {
                         </tr>
                     </thead>
                     <tbody>
+                        <?php if(count($productos) > 0):?>
                         <?php foreach($productos as $key => $producto) : ?>
                         <tr>
                             <td><?= $key + 1 ?></td>
@@ -45,6 +46,11 @@ try {
                             <td><?= $producto['PRODUCTO_PRECIO'] ?></td>
                         </tr>
                         <?php endforeach ?>
+                        <?php else :?>
+                            <tr>
+                                <td colspan="3">NO EXISTEN REGISTROS</td>
+                            </tr>
+                        <?php endif?>
                     </tbody>
                 </table>
             </div>
