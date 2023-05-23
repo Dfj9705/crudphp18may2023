@@ -27,14 +27,16 @@ try {
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
                 <table class="table table-bordered table-hover">
                     <thead class="table-dark">
                         <tr>
                             <th>NO. </th>
                             <th>NOMBRE</th>
                             <th>PRECIO</th>
+                            <th>MODIFICAR</th>
+                            <th>ELIMINAR</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +46,8 @@ try {
                             <td><?= $key + 1 ?></td>
                             <td><?= $producto['PRODUCTO_NOMBRE'] ?></td>
                             <td><?= $producto['PRODUCTO_PRECIO'] ?></td>
+                            <td><a class="btn btn-warning w-100" href="/crudphp18may2023/vistas/productos/modificar.php?producto_id=<?= $producto['PRODUCTO_ID']?>">Modificar</a></td>
+                            <td><a class="btn btn-danger w-100" href="">Eliminar</a></td>
                         </tr>
                         <?php endforeach ?>
                         <?php else :?>
@@ -55,9 +59,9 @@ try {
                 </table>
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-lg-4">
-                <a href="/crudphp18may2023/vistas/productos/buscar.php" class="btn btn-info">Volver al formulario</a>
+                <a href="/crudphp18may2023/vistas/productos/buscar.php" class="btn btn-info w-100">Volver al formulario</a>
             </div>
         </div>
     </div>
