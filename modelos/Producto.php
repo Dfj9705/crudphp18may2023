@@ -21,4 +21,10 @@ class Producto extends Conexion{
         $resultado = self::ejecutar($sql);
         return $resultado;
     }
+
+    public function buscar(){
+        $sql = "SELECT * from productos ";
+        $resultado = self::servir($sql);
+        return $resultado;
+    }
 }
