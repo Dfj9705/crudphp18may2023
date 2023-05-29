@@ -48,4 +48,10 @@ class Producto extends Conexion{
         return $resultado;
     }
 
+    public function eliminar(){
+        $sql = "UPDATE productos SET producto_situacion = 0 where producto_id = $this->producto_id";
+        
+        $resultado = self::ejecutar($sql);
+        return $resultado;
+    }
 }
