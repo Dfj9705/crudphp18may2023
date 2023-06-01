@@ -28,10 +28,14 @@ abstract class Conexion{
         $sentencia = self::$conexion->prepare($sql);
         // EJECUTAMOS A SENTENCIA
         $resultado = $sentencia->execute();
+        $id = self::$conexion->lastInsertId();
         // CERRANDO LA CONEXION
         self::$conexion = null;
         // DEVOLVEMOS RESULTADOS
-        return $resultado;
+        return [
+            'resultado' => $resultado,
+            'id' => $id
+        ];
     }
 
     public static function servir($sql){
