@@ -14,15 +14,15 @@ for($i = $tamanio -  2; $i >= 0 ; $i--){
     echo "<br>";
     $posicion++;
 }
+$residuo = $suma % 11;
+$resta = 11 - $residuo;
+$residuo2 = $resta % 11;
 echo "suma" . $suma;
 echo "<br>";
-$residuo = $suma % 11;
 echo "residuo" . $residuo;
 echo "<br>";
-$residuo2 = $residuo % 11;
 echo "residuo2" . $residuo2;
 echo "<br>";
-$resta = 11 - $residuo2;
 echo "resta" . $resta;
 echo "<br>";
-echo $resta == $validador ? "SI ES VALIDO" : " NO ES VALIDO";
+echo $residuo2 == $validador ? "SI ES VALIDO" : " NO ES VALIDO";
