@@ -21,4 +21,24 @@ class Venta extends Conexion{
         $resultado = self::ejecutar($sql);
         return $resultado;
     }
+
+    public function buscar(){
+        $sql = "SELECT * from ventas inner join clientes on venta_cliente = cliente_id where venta_situacion = 1 ";
+
+        if($this->venta_cliente != ''){
+            $sql .= " and venta_cliente = $this->venta_cliente ";
+        }
+
+        if($this->venta_fecha != ''){
+            $sql .= " and extend(venta_fecha, year to day) = '$this->venta_fecha' ";
+        }
+        if($this->venta_id != null){
+            $sql .= " and venta_id = $this->venta_id ";
+        }
+
+
+        $resultado = self::servir($sql);
+        return $resultado;
+    }
+
 }

@@ -23,4 +23,21 @@ class Detalle extends Conexion{
         $resultado = self::ejecutar($sql);
         return $resultado;
     }
+
+    public function buscar(){
+        $sql = "SELECT producto_nombre, producto_precio, sum(detalle_cantidad) as cantidad, producto_precio  * sum (detalle_cantidad) as total  FROM detalle_ventas inner join productos on detalle_producto = producto_id where detalle_situacion = 1 ";
+
+        if($this->detalle_venta != ''){
+            $sql .= " and detalle_venta = $this->detalle_venta ";
+        }
+
+        $sql .= " group by producto_nombre, producto_precio";
+
+
+        // echo $sql;
+        // exit;
+
+        $resultado = self::servir($sql);
+        return $resultado;
+    }
 }
