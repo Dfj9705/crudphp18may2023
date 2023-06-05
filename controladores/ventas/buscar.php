@@ -4,9 +4,8 @@
 // error_reporting(E_ALL);
 require_once '../../modelos/Venta.php';
 try {
-    $_GET['venta_fecha'] = date('Y-m-d', strtotime($_GET['venta_fecha']));
+    $_GET['venta_fecha'] = $_GET['venta_fecha'] != '' ? date('Y-m-d', strtotime($_GET['venta_fecha'])) : '' ;
     $venta = new Venta($_GET);
-    
     $ventas = $venta->buscar();
     // echo "<pre>";
     // var_dump($ventas);

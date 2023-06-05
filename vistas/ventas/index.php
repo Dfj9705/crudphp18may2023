@@ -122,4 +122,5 @@ require_once '../../modelos/Producto.php';
             </form>
         </div>
     </div>
+    <script src="../../assets/js/ventas.js" ></script>
 <?php include_once '../../includes/footer.php'?>
