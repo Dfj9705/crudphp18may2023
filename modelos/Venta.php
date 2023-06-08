@@ -35,7 +35,7 @@ class Venta extends Conexion{
         if($this->venta_id != null){
             $sql .= " and venta_id = $this->venta_id ";
         }
-
+        
 
         $resultado = self::servir($sql);
         return $resultado;
