@@ -37,6 +37,9 @@
                 break;
             case 'GET':
                 $producto = new Producto($_GET);
+                $productos = $producto->buscar();
+
+                echo json_encode($productos);
                 break;
             
             default:
