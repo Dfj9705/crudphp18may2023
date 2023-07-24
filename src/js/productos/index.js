@@ -5,11 +5,16 @@ const btnModificar = document.getElementById('btnModificar');
 const btnGuardar = document.getElementById('btnGuardar');
 const btnCancelar = document.getElementById('btnCancelar');
 const divTabla = document.getElementById('divTabla');
+const modalEjemplo = document.getElementById('modalEjemplo')
+let modalEjemploBS = null;
+
 
 btnModificar.disabled = true
 btnModificar.parentElement.style.display = 'none'
 btnCancelar.disabled = true
 btnCancelar.parentElement.style.display = 'none'
+
+console.log(btnGuardar.dataset)
 
 const guardar = async (evento) => {
     evento.preventDefault();
@@ -140,6 +145,8 @@ const colocarDatos = (datos) => {
     btnCancelar.disabled = false
     btnCancelar.parentElement.style.display = ''
     divTabla.style.display = 'none'
+
+    // modalEjemploBS.show();
 }
 
 const cancelarAccion = () => {
@@ -169,6 +176,7 @@ const modificar = async () => {
     }
 
     try {
+        // fetch(url, config).then( (respuesta) => respuesta.json() ).then(d => data = d)
         const respuesta = await fetch(url, config)
         const data = await respuesta.json();
         
@@ -236,7 +244,14 @@ const eliminar = async (id) => {
 
 buscar();
 
+document.addEventListener('DOMContentLoaded', () => {
+    modalEjemploBS = new bootstrap.Modal(modalEjemplo)
+})
 formulario.addEventListener('submit', guardar )
 btnBuscar.addEventListener('click', buscar)
 btnCancelar.addEventListener('click', cancelarAccion)
 btnModificar.addEventListener('click', modificar)
+modalEjemplo.addEventListener('show.bs.modal', (e)=>{
+    console.log(e);
+    console.log('se mostró el modal')
+})
