@@ -4,8 +4,8 @@
     <div class="container">
         <h1 class="text-center">Formulario de productos</h1>
         <div class="row justify-content-center mb-5">
-            <form class="col-lg-8 border bg-light p-3">
-                <input type="text" name="producto_id" id="producto_id" >
+            <form class="col-lg-8 border bg-light p-3" id="formularioProducto">
+                <input type="hidden" name="producto_id" id="producto_id" >
                 <div class="row mb-3">
                     <div class="col">
                         <label for="producto_nombre">Nombre del producto</label>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <button type="submit" id="btnGuardar" class="btn btn-primary w-100">Guardar</button>
+                        <button type="submit" form="formularioProducto" id="btnGuardar" class="btn btn-primary w-100">Guardar</button>
                     </div>
                     <div class="col">
                         <button type="button" id="btnModificar" class="btn btn-warning w-100">Modificar</button>

@@ -154,10 +154,82 @@ const cancelarAccion = () => {
     divTabla.style.display = ''
 }
 
+const modificar = async () => {
+    if(!validarFormulario(formulario)){
+        alert('Debe llenar todos los campos');
+        return 
+    }
 
-const eliminar = (id) => {
+    const body = new FormData(formulario)
+    body.append('tipo', 2)
+    const url = '/crudphp18may2023/controladores/productos/index.php';
+    const config = {
+        method : 'POST',
+        body
+    }
+
+    try {
+        const respuesta = await fetch(url, config)
+        const data = await respuesta.json();
+        
+        const {codigo, mensaje,detalle} = data;
+
+        switch (codigo) {
+            case 1:
+                formulario.reset();
+                buscar();
+                cancelarAccion();
+                break;
+        
+            case 0:
+                console.log(detalle)
+                break;
+        
+            default:
+                break;
+        }
+
+        alert(mensaje);
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const eliminar = async (id) => {
     if(confirm("¿Desea eliminar este producto?")){
-        alert("eliminando")
+        const body = new FormData()
+        body.append('tipo', 3)
+        body.append('producto_id', id)
+        const url = '/crudphp18may2023/controladores/productos/index.php';
+        const config = {
+            method : 'POST',
+            body
+        }
+        try {
+            const respuesta = await fetch(url, config)
+            const data = await respuesta.json();
+            
+            const {codigo, mensaje,detalle} = data;
+    
+            switch (codigo) {
+                case 1:
+                    buscar();
+                    break;
+            
+                case 0:
+                    console.log(detalle)
+                    break;
+            
+                default:
+                    break;
+            }
+    
+            alert(mensaje);
+    
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
@@ -167,3 +239,4 @@ buscar();
 formulario.addEventListener('submit', guardar )
 btnBuscar.addEventListener('click', buscar)
 btnCancelar.addEventListener('click', cancelarAccion)
+btnModificar.addEventListener('click', modificar)
